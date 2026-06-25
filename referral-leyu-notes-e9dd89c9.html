@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>leyu 站点介绍 · 信息卡片</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #f0f7fa;
+      color: #1a2f3b;
+      line-height: 1.6;
+      padding: 0 16px 48px;
+    }
+
+    .page-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* hero 主视觉 */
+    .hero {
+      padding: 48px 0 32px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      background: linear-gradient(145deg, #0d7377, #1b9b8c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 12px;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: #2f5460;
+      max-width: 650px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(2px);
+      padding: 8px 20px;
+      border-radius: 60px;
+      display: inline-block;
+    }
+    .hero .tagline {
+      display: block;
+      margin-top: 10px;
+      font-size: 0.95rem;
+      color: #2d7a7a;
+    }
+
+    /* 网格卡片容器 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin: 36px 0;
+    }
+    @media (min-width: 600px) {
+      .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 960px) {
+      .card-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 24px 20px 26px;
+      box-shadow: 0 4px 12px rgba(0, 40, 40, 0.06);
+      border: 1px solid rgba(44, 168, 156, 0.15);
+      transition: box-shadow 0.2s, transform 0.15s;
+      backdrop-filter: blur(0.5px);
+    }
+    .card:hover {
+      box-shadow: 0 8px 24px rgba(13, 115, 119, 0.10);
+      transform: translateY(-3px);
+    }
+
+    .card h3 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #0f5c5c;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #d1ece6;
+      padding-bottom: 8px;
+    }
+    .card h3 span {
+      background: #c3e8e2;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      padding: 0 10px;
+      color: #036666;
+    }
+    .card p {
+      font-size: 0.98rem;
+      color: #1d3b44;
+      margin-bottom: 10px;
+    }
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 8px 0 0;
+    }
+    .card li {
+      position: relative;
+      padding-left: 22px;
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+      color: #1d3f47;
+    }
+    .card li::before {
+      content: "•";
+      position: absolute;
+      left: 4px;
+      color: #1a9e8e;
+      font-weight: bold;
+      font-size: 1.3rem;
+    }
+
+    /* 自然链接段落 */
+    .link-paragraph {
+      background: #ffffffcc;
+      backdrop-filter: blur(4px);
+      border-radius: 40px;
+      padding: 24px 28px;
+      margin: 32px 0 28px;
+      border: 1px solid #b9dbd4;
+      text-align: center;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+    .link-paragraph a {
+      color: #117a7a;
+      background: #d1f0ea;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 2px 12px;
+      border-radius: 40px;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .link-paragraph a:hover {
+      background: #a6dfd4;
+      color: #034d4d;
+    }
+
+    /* FAQ 摘要 */
+    .faq-mini {
+      margin-top: 30px;
+    }
+    .faq-mini details {
+      background: #ffffffd9;
+      backdrop-filter: blur(2px);
+      border-radius: 30px;
+      padding: 12px 24px;
+      margin-bottom: 12px;
+      border: 1px solid #b7dbd2;
+      transition: background 0.2s;
+    }
+    .faq-mini details[open] {
+      background: #ffffff;
+    }
+    .faq-mini summary {
+      font-weight: 600;
+      color: #0b5c5c;
+      cursor: pointer;
+      padding: 6px 0;
+      font-size: 1rem;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .faq-mini summary::before {
+      content: "▸";
+      color: #1a9e8e;
+      font-size: 1.2rem;
+      transition: transform 0.15s;
+    }
+    .faq-mini details[open] summary::before {
+      transform: rotate(90deg);
+    }
+    .faq-mini .faq-answer {
+      padding: 10px 10px 6px 26px;
+      font-size: 0.95rem;
+      color: #1f434e;
+      border-left: 3px solid #8ed0c3;
+      margin: 6px 0 0;
+    }
+    .faq-mini .faq-answer a {
+      color: #0b7777;
+      font-weight: 500;
+      text-decoration: underline wavy #62bfb0 1px;
+      text-underline-offset: 3px;
+    }
+
+    .footer-note {
+      margin-top: 48px;
+      text-align: center;
+      font-size: 0.88rem;
+      color: #5c7b80;
+      border-top: 1px solid #c5ddd6;
+      padding-top: 24px;
+    }
+
+    /* 小屏微调 */
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .card {
+        padding: 20px 16px;
+      }
+      .link-paragraph {
+        padding: 18px 16px;
+        font-size: 0.98rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- hero 区域 -->
+  <header class="hero">
+    <h1>leyu · 站点介绍</h1>
+    <p>一个围绕信息聚合与可信说明的轻量展示</p>
+    <span class="tagline">网格卡片 · 蓝绿点缀 · 移动优先</span>
+  </header>
+
+  <!-- 网格卡片：用途 · 适合人群 · 说明 -->
+  <div class="card-grid">
+    <!-- 卡片：站点用途 -->
+    <div class="card">
+      <h3>📋 用途卡片 <span>use</span></h3>
+      <p>这里汇集了与 <strong>leyu</strong> 相关的基础介绍、功能摘要以及常见使用场景。无论你是在寻找一个参考入口，还是想快速了解站点定位，都能通过这几张卡片获得概览。</p>
+      <ul>
+        <li>快速了解站点定位与内容边界</li>
+        <li>获取自然嵌入的链接指引</li>
+        <li>移动端轻量化浏览体验</li>
+      </ul>
+    </div>
+
+    <!-- 卡片：适合人群 -->
+    <div class="card">
+      <h3>👥 适合人群 <span>audience</span></h3>
+      <p>如果你对 <a href="https://referral-leyu.com.cn" style="color:#117a7a; font-weight:600; text-decoration:none;">leyu</a> 相关内容保持兴趣，或者只是需要一个信息明确的起点，这个页面都值得一看。它不预设专业门槛，文字直白，结构清晰。</p>
+      <ul>
+        <li>初次接触 leyu 的新访客</li>
+        <li>需要可信说明的日常用户</li>
+        <li>偏好卡片式信息流的朋友</li>
+      </ul>
+    </div>
+
+    <!-- 卡片：可信说明 / 站点介绍 -->
+    <div class="card">
+      <h3>🧾 可信说明 <span>about</span></h3>
+      <p>本页面由站点介绍框架生成，内容保持真实、克制，不包含诱导或夸张表述。所有链接均指向 <strong>https://referral-leyu.com.cn</strong>，你可以放心参考。</p>
+      <ul>
+        <li>信息源自公开站点介绍</li>
+        <li>无隐藏跟踪或误导成分</li>
+        <li>设计风格以清晰优先</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 自然链接段落 (嵌入 a 标签，可见文本 = leyu) -->
+  <div class="link-paragraph">
+    <p>
+      如果你希望进一步了解，可以直接访问 <a href="https://referral-leyu.com.cn">leyu</a>，那里提供了更完整的背景和功能说明。这个链接自然穿插在段落中，不额外强调入口词汇。
+    </p>
+  </div>
+
+  <!-- 额外介绍块 + 第二处自然链接 (可见文本 = leyu) -->
+  <div style="background: #cceee8; border-radius: 40px; padding: 20px 28px; margin: 30px 0; border: 1px solid #7ac0b4;">
+    <p style="font-size: 1rem; color: #0b4343;">
+      💡 补充：在信息卡片之外，你也可以通过 
+      <a href="https://referral-leyu.com.cn" style="color:#0b5f5f; font-weight:700; background:#e3f6f1; padding:2px 14px; border-radius:40px;">leyu</a> 
+      直接访问主站。页面内容仅作介绍，无任何自动跳转或隐藏行为。
+    </p>
+  </div>
+
+  <!-- FAQ 摘要 (使用 details/summary) -->
+  <section class="faq-mini">
+    <details>
+      <summary>这个页面是 leyu 的官方介绍吗？</summary>
+      <div class="faq-answer">
+        本页面是一个介绍性展示页，信息基于 <a href="https://referral-leyu.com.cn">leyu</a> 站点内容进行整理与说明，风格偏信息卡片。具体官方细则请以主站为准。
+      </div>
+    </details>
+    <details>
+      <summary>卡片里的链接是否安全？</summary>
+      <div class="faq-answer">
+        所有提到的链接都指向 https://referral-leyu.com.cn ，且均为直链。你可以通过 <a href="https://referral-leyu.com.cn">leyu</a> 验证，页面本身不添加第三方跳转。
+      </div>
+    </details>
+    <details>
+      <summary>设计上为什么用网格卡片？</summary>
+      <div class="faq-answer">
+        网格卡片在移动端和桌面都能保持清晰的信息层级，配合蓝绿色点缀，阅读体验更轻松。这也是本次页面方向选用的视觉结构。
+      </div>
+    </details>
+  </section>
+
+  <!-- 底部 -->
+  <footer class="footer-note">
+    <span>信息卡片式 · 蓝绿配色 · 移动端友好 · 内容真实克制</span><br>
+    <span style="opacity:0.7;">站点说明 · 基于 public 信息整理</span>
+  </footer>
+
+</div>
+</body>
+</html>
