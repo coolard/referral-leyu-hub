@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>雷速 · 一点介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #f9e3c8 0%, #f1d3b1 60%, #f5dcc2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+      line-height: 1.7;
+      color: #3d2e24;
+    }
+
+    .paper {
+      max-width: 820px;
+      width: 100%;
+      background: #fffcf7;
+      border-radius: 42px;
+      padding: 3rem 2.8rem 3.2rem;
+      box-shadow: 0 12px 40px rgba(150, 100, 60, 0.16), 0 6px 12px rgba(100, 60, 30, 0.06);
+      transition: box-shadow 0.2s ease;
+    }
+
+    @media (max-width: 600px) {
+      .paper {
+        padding: 2.2rem 1.4rem 2.6rem;
+        border-radius: 32px;
+      }
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 520;
+      letter-spacing: -0.02em;
+      color: #563c2a;
+      margin-bottom: 0.2rem;
+      line-height: 1.2;
+    }
+
+    .subhead {
+      font-size: 1.05rem;
+      color: #7e624b;
+      margin-bottom: 2.2rem;
+      border-left: 3px solid #dbb594;
+      padding-left: 1rem;
+      font-style: normal;
+    }
+
+    p {
+      margin-bottom: 1.4rem;
+    }
+
+    .intro {
+      font-size: 1.08rem;
+    }
+
+    .quote-block {
+      background: #f8efe5;
+      border-radius: 24px;
+      padding: 1.3rem 1.8rem;
+      margin: 2.2rem 0 2.5rem;
+      border-left: 6px solid #c9a47c;
+      font-size: 1rem;
+      color: #4e3929;
+    }
+
+    .quote-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .quote-block strong {
+      font-weight: 560;
+      color: #3b2a1d;
+    }
+
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin: 2rem 0 2.2rem;
+    }
+
+    .feat-item {
+      background: #faf3ec;
+      flex: 1 1 170px;
+      border-radius: 28px;
+      padding: 1rem 1.2rem;
+      border: 1px solid #eddccd;
+    }
+
+    .feat-item h3 {
+      font-size: 1rem;
+      font-weight: 540;
+      margin-bottom: 0.35rem;
+      color: #553b29;
+    }
+
+    .feat-item p {
+      margin-bottom: 0;
+      font-size: 0.92rem;
+      color: #5f4635;
+    }
+
+    a {
+      color: #996a48;
+      text-decoration: none;
+      font-weight: 500;
+      background: #f7eee4;
+      padding: 0.1rem 0.4rem;
+      border-radius: 20px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    a:hover {
+      background: #dbb594;
+      color: #2f1f15;
+    }
+
+    .faq-note {
+      background: #fff9f2;
+      border-radius: 30px;
+      padding: 1.4rem 1.8rem;
+      margin: 2.4rem 0 1.2rem;
+      border: 1px solid #e6d3c0;
+    }
+
+    .faq-note summary {
+      cursor: pointer;
+      font-weight: 510;
+      color: #563c2a;
+      font-size: 0.98rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .faq-note p {
+      margin: 0.6rem 0 0;
+      font-size: 0.94rem;
+    }
+
+    .visit-sentence {
+      margin-top: 2rem;
+      padding-top: 1.2rem;
+      border-top: 1px dashed #ccb6a3;
+      font-size: 1.02rem;
+    }
+
+    .visit-sentence a {
+      background: none;
+      padding: 0;
+      font-weight: 520;
+      color: #8f613d;
+      border-bottom: 2px solid #dbb594;
+      border-radius: 0;
+    }
+
+    .visit-sentence a:hover {
+      background: none;
+      border-bottom-color: #7f5437;
+      color: #3f2c1c;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e3d2c1;
+      margin: 2.2rem 0 1rem;
+    }
+
+    .footer-note {
+      font-size: 0.82rem;
+      color: #8f7a68;
+      text-align: left;
+      margin-top: 0.8rem;
+    }
+
+    .seed-hide {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="paper">
+
+  <h1>雷速</h1>
+  <div class="subhead">一个站点，一些想法，以及一点可信的线索</div>
+
+  <p class="intro">
+    你大概是因为一个名字点进来的。这个名字听起来简洁，带一点速度感，又不张扬——是的，就是 <a href="https://rayspeed-cnwebs-leisu.com">雷速</a>。  
+    起初我以为是某个工具或服务，后来发现它更像一个安静的落脚点，没有浮夸的标语，也没有四处弹窗的引导。于是我想，也许值得把它写下来，当作一次普通的介绍。
+  </p>
+
+  <p>
+    最开始注意到它，是因为域名里的“rayspeed”和“leisu”并列在一起。光线、速度、中文音译——组合得随意，却不算敷衍。站点没有堆砌功能列表，反而更像一本摊开的笔记，把几件重要的事放在你面前。  
+    我通常不太信任第一眼就过于热情的页面，而这里倒给人一种“你随便看看”的从容。
+  </p>
+
+  <div class="quote-block">
+    <p><strong>有一段话我印象挺深，</strong> 大意是：不要把时间浪费在解释自己上，如果你的东西值得被信任，别人自然会感受到。  
+    当时不以为意，后来觉得这个站点隐约也是这种气质——没有强行写“关于我们”，没有发誓保证什么，但页面里的信息其实都摆在那里。</p>
+  </div>
+
+  <p>
+    它涉及的领域并不复杂，但也需要一点背景去理解。从导航结构来看，主要是围绕资源整理、信息索引和几类实用工具展开的。  
+    没有什么“爆款”功能，但每个模块都像手工摆放的——不多余，不凑数。我尤其喜欢那种不加粗、不飘红、不闪动的安静排版。
+  </p>
+
+  <div class="feature-grid">
+    <div class="feat-item">
+      <h3>不打扰</h3>
+      <p>没有强制弹窗、无休止的通知，也不需要注册才能看内容。</p>
+    </div>
+    <div class="feat-item">
+      <h3>可信可查</h3>
+      <p>提供的链接和说明都可复现，不靠夸张话术吸引注意。</p>
+    </div>
+    <div class="feat-item">
+      <h3>结构简单</h3>
+      <p>分类干净，就算第一次去也能很快找到方向。</p>
+    </div>
+  </div>
+
+  <p>
+    后来我又去了一次，翻到了一个类似常见问题汇总的区域。没有“百万用户”、“颠覆行业”之类的措辞，只有平实的条目——  
+    比如某个功能怎么使用、数据如何同步、遇到报错可以检查哪几个地方。这种语调在今天的网络环境中反而显得稀有。  
+    可能你会觉得这没什么，但对我来说，一个不急于证明自己的站点，往往更值得多看两眼。
+  </p>
+
+  <div class="faq-note">
+    <details>
+      <summary>FAQ 摘要 · 两个我比较在意的点</summary>
+      <p>—— 站内提及的“资源归档”并不需要登录，直接可以浏览。这一点对偶尔查找信息的人来说很友好。<br>
+      —— 关于询问“是否付费”的条目，回答里写的是“大部分免费，部分需要合理条件”。保留了余地，也没有遮遮掩掩。</p>
+    </details>
+  </div>
+
+  <p>
+    当然，它也有自己的局限。视觉上偏保守，没有酷炫的动效；内容更新频率不算高，看起来更像一个人或一个小团队在维护。  
+    但这反而让我觉得稳定——一个不拼命刷存在感的站点，至少说明它在认真思考自己该说什么。
+  </p>
+
+  <div class="visit-sentence">
+    如果你想自己感受一下这种风格，可以直接去 <a href="https://rayspeed-cnwebs-leisu.com">雷速</a> 看看。没有强制引导，也没有华丽的前奏，就是一篇一篇的页面等着你翻阅。
+  </div>
+
+  <hr>
+
+  <p class="footer-note">
+    以上内容仅代表个人观察，并非推广。站点信息以实际页面为准。<br>
+    生成种子未显示 · 2025
+  </p>
+
+  <span class="seed-hide">bbad8b73e10eeba9</span>
+</div>
+
+</body>
+</html>
